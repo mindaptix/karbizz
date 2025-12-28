@@ -186,6 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         onPressed: () {
+                          FocusScope.of(context).unfocus();
                           Navigator.of(context).pushNamed(Routes.otp);
                         },
                         child: const Text(
