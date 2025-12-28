@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import '../../routes/routes.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class OtpScreen extends StatefulWidget {
+  const OtpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<OtpScreen> createState() => _OtpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  bool obscure = true;
+class _OtpScreenState extends State<OtpScreen> {
+  final List<TextEditingController> controllers = List.generate(
+    4,
+    (_) => TextEditingController(),
+  );
 
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  @override
+  void dispose() {
+    for (final controller in controllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SafeArea(
           child: Column(
             children: [
-
               const SizedBox(height: 40),
-
-              /// Logo
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -44,10 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 70,
                 ),
               ),
-
               const SizedBox(height: 16),
-
-              /// Title
               const Text(
                 "Karbizz Pro",
                 style: TextStyle(
@@ -56,10 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Color(0xff1A2D5C),
                 ),
               ),
-
               const SizedBox(height: 4),
-
-              /// Subtitle
               const Text(
                 "Professional Driver Platform",
                 style: TextStyle(
@@ -67,10 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.black54,
                 ),
               ),
-
               const SizedBox(height: 30),
-
-              /// White Card Section
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 28),
@@ -88,12 +83,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Center(
                       child: Column(
                         children: const [
                           Text(
-                            "Welcome Back",
+                            "Verify OTP",
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w600,
@@ -101,80 +95,50 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           SizedBox(height: 6),
                           Text(
-                            "Sign in to your driver account",
+                            "Enter the 4-digit code sent to your phone",
                             style: TextStyle(
                               fontSize: 14,
                               color: Colors.black54,
                             ),
+                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
                     ),
-
                     const SizedBox(height: 30),
-
                     const Text(
-                      "Mobile Number",
+                      "One Time Password",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                       ),
                     ),
-
-                    const SizedBox(height: 6),
-
-                    TextField(
-                      controller: phoneController,
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color(0xffF5F6FA),
-                        hintText: "98765 43210",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    const Text(
-                      "Password",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15,
-                      ),
-                    ),
-
-                    const SizedBox(height: 6),
-
-                    TextField(
-                      controller: passwordController,
-                      obscureText: obscure,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color(0xffF5F6FA),
-                        hintText: "Enter your password",
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            obscure ? Icons.visibility_off : Icons.visibility,
-                            color: Colors.black45,
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: List.generate(
+                        controllers.length,
+                        (index) => SizedBox(
+                          width: 56,
+                          child: TextField(
+                            controller: controllers[index],
+                            keyboardType: TextInputType.number,
+                            textAlign: TextAlign.center,
+                            maxLength: 1,
+                            decoration: InputDecoration(
+                              counterText: "",
+                              filled: true,
+                              fillColor: const Color(0xffF5F6FA),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
                           ),
-                          onPressed: () {
-                            setState(() => obscure = !obscure);
-                          },
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
                         ),
                       ),
                     ),
-
                     const SizedBox(height: 28),
-
-                    /// Sign In Button
                     SizedBox(
                       width: double.infinity,
                       height: 52,
@@ -185,11 +149,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(14),
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.of(context).pushNamed(Routes.otp);
-                        },
+                        onPressed: () {},
                         child: const Text(
-                          "Sign In",
+                          "Verify",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 17,
@@ -198,18 +160,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-
                     const SizedBox(height: 22),
-
-                    /// Signup
                     Center(
                       child: RichText(
                         text: const TextSpan(
-                          text: "Don't have an account? ",
+                          text: "Didn't receive the code? ",
                           style: TextStyle(color: Colors.black87),
                           children: [
                             TextSpan(
-                              text: "Sign up here",
+                              text: "Resend",
                               style: TextStyle(
                                 color: Color(0xff1A3FA6),
                                 fontWeight: FontWeight.w600,
@@ -222,10 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-
               const SizedBox(height: 20),
-
-              /// Footer
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Text(
@@ -237,7 +193,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 20),
             ],
           ),
