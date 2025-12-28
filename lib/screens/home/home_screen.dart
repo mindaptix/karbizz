@@ -8,10 +8,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xffF3F5FA),
       drawer: const _SideNavigationDrawer(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
@@ -452,8 +451,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-            ],
-          ),
+          ],
         ),
       ),
     );
@@ -467,9 +465,8 @@ class _SideNavigationDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: const Color(0xffC0C2C6),
-      child: SafeArea(
-        child: Column(
-          children: [
+      child: Column(
+        children: [
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(20),
@@ -616,8 +613,7 @@ class _SideNavigationDrawer extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
+        ],
       ),
     );
   }

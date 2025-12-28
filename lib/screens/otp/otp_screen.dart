@@ -27,9 +27,8 @@ class _OtpScreenState extends State<OtpScreen> {
     return Scaffold(
       backgroundColor: const Color(0xffF4F6FB),
       body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
+        child: Column(
+          children: [
               const SizedBox(height: 40),
               Container(
                 padding: const EdgeInsets.all(16),
@@ -198,8 +197,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-            ],
-          ),
+          ],
         ),
       ),
     );
