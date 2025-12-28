@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'screens/home/all_duties_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/otp/otp_screen.dart';
@@ -35,6 +36,7 @@ class KarbizzApp extends StatelessWidget {
         Routes.login: (context) => const LoginScreen(),
         Routes.otp: (context) => const OtpScreen(),
         Routes.home: (context) => const HomeScreen(),
+        Routes.allDuties: (context) => const AllDutiesScreen(),
       },
 
       theme: ThemeData(
