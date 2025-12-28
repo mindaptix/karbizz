@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../routes/routes.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
@@ -149,7 +150,10 @@ class _OtpScreenState extends State<OtpScreen> {
                             borderRadius: BorderRadius.circular(14),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          FocusScope.of(context).unfocus();
+                          Navigator.of(context).pushReplacementNamed(Routes.home);
+                        },
                         child: const Text(
                           "Verify",
                           style: TextStyle(
