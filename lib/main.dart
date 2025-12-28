@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/home/home_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/otp/otp_screen.dart';
 import 'screens/splash/splash_screen.dart';
@@ -25,6 +26,7 @@ class KarbizzApp extends StatelessWidget {
         Routes.splash: (context) => const SplashScreen(),
         Routes.login: (context) => const LoginScreen(),
         Routes.otp: (context) => const OtpScreen(),
+        Routes.home: (context) => const HomeScreen(),
       },
 
       theme: ThemeData(
