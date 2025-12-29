@@ -27,238 +27,261 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 18,
-                        offset: Offset(0, 8),
-                      ),
-                    ],
-                  ),
-                  child: Image.asset(
-                    "assets/logo.png",
-                    width: 64,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  "Karbizz Pro",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                const Text(
-                  "CORPORATE CAR RENTAL",
-                  style: TextStyle(
-                    fontSize: 12,
-                    letterSpacing: 2,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xffF4B740),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Welcome",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                const Text(
-                  "Sign in to continue",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Color(0xffF4B740),
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                  decoration: BoxDecoration(
-                    color: const Color(0xffF7F7FA),
-                    borderRadius: BorderRadius.circular(28),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 20,
-                        offset: Offset(0, 10),
-                      ),
-                    ],
-                  ),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          color: const Color(0xffE6ECF8),
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 10),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xff1E2B46),
-                                  borderRadius: BorderRadius.circular(30),
+                      Column(
+                        children: [
+                          const SizedBox(height: 20),
+                          Container(
+                            padding: const EdgeInsets.all(14),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 18,
+                                  offset: Offset(0, 8),
                                 ),
-                                child: const Center(
+                              ],
+                            ),
+                            child: Image.asset(
+                              "assets/logo.png",
+                              width: 64,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          const Text(
+                            "Karbizz Pro",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          const Text(
+                            "CORPORATE CAR RENTAL",
+                            style: TextStyle(
+                              fontSize: 12,
+                              letterSpacing: 2,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xffF4B740),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          const Text(
+                            "Welcome",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          const Text(
+                            "Sign in to continue",
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xffF4B740),
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 20,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xffF7F7FA),
+                              borderRadius: BorderRadius.circular(28),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 20,
+                                  offset: Offset(0, 10),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(6),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xffE6ECF8),
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xff1E2B46),
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                          ),
+                                          child: const Center(
+                                            child: Text(
+                                              "Driver Login",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Center(
+                                          child: Text(
+                                            "Passenger Login",
+                                            style: TextStyle(
+                                              color: const Color(0xff1E2B46),
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 22),
+                                Container(
+                                  height: 64,
+                                  width: 64,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff37435D),
+                                    borderRadius: BorderRadius.circular(32),
+                                  ),
+                                  child: const Icon(
+                                    Icons.person_outline,
+                                    color: Colors.white,
+                                    size: 32,
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                const Text(
+                                  "Driver Login",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff1E2B46),
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                const Text(
+                                  "Enter your registered phone number",
+                                  style: TextStyle(
+                                    color: Color(0xff64748B),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                Align(
+                                  alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "Driver Login",
+                                    "Phone Number",
                                     style: TextStyle(
-                                      color: Colors.white,
                                       fontWeight: FontWeight.w600,
+                                      color: Color(0xff1E2B46),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Center(
-                                child: Text(
-                                  "Passenger Login",
-                                  style: TextStyle(
-                                    color: const Color(0xff1E2B46),
-                                    fontWeight: FontWeight.w600,
+                                const SizedBox(height: 8),
+                                TextField(
+                                  controller: phoneController,
+                                  keyboardType: TextInputType.phone,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    hintText: "+91 98765 43210",
+                                    prefixIcon: const Icon(
+                                      Icons.phone_in_talk_outlined,
+                                      color: Color(0xff64748B),
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(14),
+                                      borderSide: BorderSide.none,
+                                    ),
                                   ),
                                 ),
+                                const SizedBox(height: 20),
+                                SizedBox(
+                                  width: double.infinity,
+                                  height: 50,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xff2C3957),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      debugPrint("LOGIN -> OTP");
+                                      Navigator.of(context).pushNamed(Routes.otp);
+                                    },
+                                    child: const Text(
+                                      "Send OTP",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const SizedBox(height: 24),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const [
+                              _FeatureItem(
+                                icon: Icons.verified_user_outlined,
+                                label: "Secure\nAuthentication",
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 22),
-                      Container(
-                        height: 64,
-                        width: 64,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff37435D),
-                          borderRadius: BorderRadius.circular(32),
-                        ),
-                        child: const Icon(
-                          Icons.person_outline,
-                          color: Colors.white,
-                          size: 32,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        "Driver Login",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xff1E2B46),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        "Enter your registered phone number",
-                        style: TextStyle(
-                          color: Color(0xff64748B),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Phone Number",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xff1E2B46),
+                              _FeatureItem(
+                                icon: Icons.star_outline,
+                                label: "Professional\nService",
+                              ),
+                              _FeatureItem(
+                                icon: Icons.verified_outlined,
+                                label: "Quick\nAccess",
+                              ),
+                            ],
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      TextField(
-                        controller: phoneController,
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: "+91 98765 43210",
-                          prefixIcon: const Icon(
-                            Icons.phone_in_talk_outlined,
-                            color: Color(0xff64748B),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(14),
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xff2C3957),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                          ),
-                          onPressed: () {
-                            debugPrint("LOGIN -> OTP");
-                            Navigator.of(context).pushNamed(Routes.otp);
-                          },
-                          child: const Text(
-                            "Send OTP",
+                          const SizedBox(height: 18),
+                          const Text(
+                            "By continuing, you agree to our Terms of Service & Privacy Policy",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              color: Color(0xffB2B9C9),
+                              fontSize: 12,
                             ),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    _FeatureItem(
-                      icon: Icons.verified_user_outlined,
-                      label: "Secure\nAuthentication",
-                    ),
-                    _FeatureItem(
-                      icon: Icons.star_outline,
-                      label: "Professional\nService",
-                    ),
-                    _FeatureItem(
-                      icon: Icons.verified_outlined,
-                      label: "Quick\nAccess",
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 18),
-                const Text(
-                  "By continuing, you agree to our Terms of Service & Privacy Policy",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xffB2B9C9),
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),
