@@ -34,9 +34,10 @@ class _OtpScreenState extends State<OtpScreen> {
         child: SafeArea(
           child: LayoutBuilder(
             builder: (context, constraints) {
+              final bool isCompact = constraints.maxHeight < 720;
               return Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    EdgeInsets.symmetric(horizontal: 20, vertical: isCompact ? 14 : 20),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(minHeight: constraints.maxHeight),
                   child: Column(
@@ -44,39 +45,39 @@ class _OtpScreenState extends State<OtpScreen> {
                     children: [
                       Column(
                         children: [
-                          const SizedBox(height: 16),
+                          SizedBox(height: isCompact ? 10 : 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                padding: const EdgeInsets.all(12),
+                                padding: EdgeInsets.all(isCompact ? 8 : 12),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(18),
                                 ),
                                 child: Image.asset(
                                   "assets/logo.png",
-                                  width: 48,
+                                  width: isCompact ? 40 : 48,
                                 ),
                               ),
-                              const SizedBox(width: 12),
+                              SizedBox(width: isCompact ? 8 : 12),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
+                                children: [
                                   Text(
                                     "Karbizz Pro",
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: isCompact ? 18 : 22,
                                       fontWeight: FontWeight.w700,
                                       color: Colors.white,
                                     ),
                                   ),
-                                  SizedBox(height: 4),
+                                  SizedBox(height: isCompact ? 2 : 4),
                                   Text(
                                     "CORPORATE CAR RENTAL",
                                     style: TextStyle(
-                                      fontSize: 12,
-                                      letterSpacing: 1.4,
+                                      fontSize: isCompact ? 10 : 12,
+                                      letterSpacing: isCompact ? 1.2 : 1.4,
                                       color: Color(0xffF4C23C),
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -85,24 +86,24 @@ class _OtpScreenState extends State<OtpScreen> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 24),
-                          const Text(
+                          SizedBox(height: isCompact ? 16 : 24),
+                          Text(
                             "Welcome",
                             style: TextStyle(
-                              fontSize: 26,
+                              fontSize: isCompact ? 22 : 26,
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          const SizedBox(height: 6),
-                          const Text(
+                          SizedBox(height: isCompact ? 4 : 6),
+                          Text(
                             "Sign in to continue",
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: isCompact ? 12 : 14,
                               color: Color(0xffF4C23C),
                             ),
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: isCompact ? 16 : 24),
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16,
@@ -110,7 +111,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             ),
                             decoration: BoxDecoration(
                               color: const Color(0xffF7F7F7),
-                              borderRadius: BorderRadius.circular(24),
+                              borderRadius: BorderRadius.circular(isCompact ? 20 : 24),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.12),
@@ -122,7 +123,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             child: Column(
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.all(6),
+                                  padding: EdgeInsets.all(isCompact ? 4 : 6),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20),
@@ -132,89 +133,91 @@ class _OtpScreenState extends State<OtpScreen> {
                                       Expanded(
                                         child: Container(
                                           padding:
-                                              const EdgeInsets.symmetric(vertical: 10),
+                                              EdgeInsets.symmetric(vertical: isCompact ? 8 : 10),
                                           decoration: BoxDecoration(
                                             color: const Color(0xff1A2D5C),
                                             borderRadius:
                                                 BorderRadius.circular(16),
                                           ),
-                                          child: const Text(
+                                          child: Text(
                                             "Driver Login",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w600,
+                                              fontSize: isCompact ? 12 : 14,
                                             ),
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(width: 12),
-                                      const Expanded(
+                                      SizedBox(width: isCompact ? 8 : 12),
+                                      Expanded(
                                         child: Text(
                                           "Passenger Login",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Color(0xff1A2D5C),
                                             fontWeight: FontWeight.w600,
+                                            fontSize: isCompact ? 12 : 14,
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 24),
+                                SizedBox(height: isCompact ? 16 : 24),
                                 Container(
-                                  width: 70,
-                                  height: 70,
-                                  decoration: const BoxDecoration(
+                                  width: isCompact ? 56 : 70,
+                                  height: isCompact ? 56 : 70,
+                                  decoration: BoxDecoration(
                                     color: Color(0xff1EC16B),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: const Icon(
+                                  child: Icon(
                                     Icons.phone,
                                     color: Colors.white,
-                                    size: 32,
+                                    size: isCompact ? 26 : 32,
                                   ),
                                 ),
-                                const SizedBox(height: 16),
-                                const Text(
+                                SizedBox(height: isCompact ? 10 : 16),
+                                Text(
                                   "Verify OTP",
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: isCompact ? 18 : 20,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xff2A3348),
                                   ),
                                 ),
-                                const SizedBox(height: 8),
-                                const Text(
+                                SizedBox(height: isCompact ? 6 : 8),
+                                Text(
                                   "We've sent a 6-digit OTP to\n9464506199",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: isCompact ? 12 : 14,
                                     color: Color(0xff4B556B),
                                   ),
                                 ),
-                                const SizedBox(height: 20),
-                                const Align(
+                                SizedBox(height: isCompact ? 14 : 20),
+                                Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
                                     "Enter OTP",
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: isCompact ? 12 : 14,
                                       fontWeight: FontWeight.w600,
                                       color: Color(0xff2A3348),
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 10),
+                                SizedBox(height: isCompact ? 8 : 10),
                                 TextField(
                                   controller: otpController,
                                   keyboardType: TextInputType.number,
                                   maxLength: 6,
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    letterSpacing: 4,
+                                  style: TextStyle(
+                                    fontSize: isCompact ? 16 : 18,
+                                    letterSpacing: isCompact ? 3 : 4,
                                     color: Color(0xff2A3348),
                                   ),
                                   decoration: InputDecoration(
@@ -222,9 +225,9 @@ class _OtpScreenState extends State<OtpScreen> {
                                     filled: true,
                                     fillColor: Colors.white,
                                     hintText: "123456",
-                                    hintStyle: const TextStyle(
+                                    hintStyle: TextStyle(
                                       color: Color(0xff9AA3B2),
-                                      letterSpacing: 4,
+                                      letterSpacing: isCompact ? 3 : 4,
                                     ),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(14),
@@ -232,10 +235,10 @@ class _OtpScreenState extends State<OtpScreen> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 16),
+                                SizedBox(height: isCompact ? 12 : 16),
                                 SizedBox(
                                   width: double.infinity,
-                                  height: 52,
+                                  height: isCompact ? 46 : 52,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xff8ED0A5),
@@ -249,22 +252,23 @@ class _OtpScreenState extends State<OtpScreen> {
                                       Navigator.of(context)
                                           .pushReplacementNamed(Routes.home);
                                     },
-                                    child: const Text(
+                                    child: Text(
                                       "Verify & Login",
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 16,
+                                        fontSize: isCompact ? 14 : 16,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 18),
-                                const Text.rich(
+                                SizedBox(height: isCompact ? 12 : 18),
+                                Text.rich(
                                   TextSpan(
                                     text: "Didn't receive OTP? ",
                                     style: TextStyle(
                                       color: Color(0xff6B7280),
+                                      fontSize: isCompact ? 12 : 14,
                                     ),
                                     children: [
                                       TextSpan(
@@ -284,33 +288,37 @@ class _OtpScreenState extends State<OtpScreen> {
                       ),
                       Column(
                         children: [
-                          const SizedBox(height: 22),
+                          SizedBox(height: isCompact ? 14 : 22),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               _FeatureItem(
                                 icon: Icons.security,
                                 label: "Secure\nAuthentication",
+                                isCompact: isCompact,
                               ),
                               _FeatureItem(
                                 icon: Icons.star,
                                 label: "Professional Service",
+                                isCompact: isCompact,
                               ),
                               _FeatureItem(
                                 icon: Icons.flash_on,
                                 label: "Quick Access",
+                                isCompact: isCompact,
                               ),
                             ],
                           ),
-                          const SizedBox(height: 20),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24),
+                          SizedBox(height: isCompact ? 12 : 20),
+                          Padding(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: isCompact ? 12 : 24),
                             child: Text(
                               "By continuing, you agree to our Terms of Service & Privacy Policy",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Color(0xff9BA3B2),
-                                fontSize: 12,
+                                fontSize: isCompact ? 10 : 12,
                               ),
                             ),
                           ),
@@ -332,18 +340,20 @@ class _FeatureItem extends StatelessWidget {
   const _FeatureItem({
     required this.icon,
     required this.label,
+    required this.isCompact,
   });
 
   final IconData icon;
   final String label;
+  final bool isCompact;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          width: 44,
-          height: 44,
+          width: isCompact ? 38 : 44,
+          height: isCompact ? 38 : 44,
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.12),
             shape: BoxShape.circle,
@@ -351,16 +361,16 @@ class _FeatureItem extends StatelessWidget {
           child: Icon(
             icon,
             color: const Color(0xffF4C23C),
-            size: 22,
+            size: isCompact ? 18 : 22,
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: isCompact ? 6 : 8),
         Text(
           label,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
-            fontSize: 12,
+            fontSize: isCompact ? 10 : 12,
             fontWeight: FontWeight.w600,
           ),
         ),

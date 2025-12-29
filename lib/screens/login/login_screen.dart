@@ -29,9 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SafeArea(
           child: LayoutBuilder(
             builder: (context, constraints) {
+              final bool isCompact = constraints.maxHeight < 720;
               return Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                    EdgeInsets.symmetric(horizontal: 20, vertical: isCompact ? 16 : 24),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(minHeight: constraints.maxHeight),
                   child: Column(
@@ -39,9 +40,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Column(
                         children: [
-                          const SizedBox(height: 20),
+                          SizedBox(height: isCompact ? 12 : 20),
                           Container(
-                            padding: const EdgeInsets.all(14),
+                            padding: EdgeInsets.all(isCompact ? 10 : 14),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
@@ -55,55 +56,55 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             child: Image.asset(
                               "assets/logo.png",
-                              width: 64,
+                              width: isCompact ? 52 : 64,
                             ),
                           ),
-                          const SizedBox(height: 16),
-                          const Text(
+                          SizedBox(height: isCompact ? 10 : 16),
+                          Text(
                             "Karbizz Pro",
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: isCompact ? 20 : 24,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                             ),
                           ),
-                          const SizedBox(height: 6),
-                          const Text(
+                          SizedBox(height: isCompact ? 4 : 6),
+                          Text(
                             "CORPORATE CAR RENTAL",
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: isCompact ? 10 : 12,
                               letterSpacing: 2,
                               fontWeight: FontWeight.w600,
                               color: Color(0xffF4B740),
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          const Text(
+                          SizedBox(height: isCompact ? 12 : 20),
+                          Text(
                             "Welcome",
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: isCompact ? 24 : 30,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),
-                          const SizedBox(height: 6),
-                          const Text(
+                          SizedBox(height: isCompact ? 4 : 6),
+                          Text(
                             "Sign in to continue",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: isCompact ? 13 : 15,
                               color: Color(0xffF4B740),
                             ),
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: isCompact ? 16 : 24),
                           Container(
                             width: double.infinity,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 20,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: isCompact ? 12 : 16,
+                              vertical: isCompact ? 16 : 20,
                             ),
                             decoration: BoxDecoration(
                               color: const Color(0xffF7F7FA),
-                              borderRadius: BorderRadius.circular(28),
+                              borderRadius: BorderRadius.circular(isCompact ? 22 : 28),
                               boxShadow: const [
                                 BoxShadow(
                                   color: Colors.black26,
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Column(
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.all(6),
+                                  padding: EdgeInsets.all(isCompact ? 4 : 6),
                                   decoration: BoxDecoration(
                                     color: const Color(0xffE6ECF8),
                                     borderRadius: BorderRadius.circular(40),
@@ -124,15 +125,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                     children: [
                                       Expanded(
                                         child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 10,
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: isCompact ? 8 : 10,
                                           ),
                                           decoration: BoxDecoration(
                                             color: const Color(0xff1E2B46),
                                             borderRadius:
                                                 BorderRadius.circular(30),
                                           ),
-                                          child: const Center(
+                                          child: Center(
                                             child: Text(
                                               "Driver Login",
                                               style: TextStyle(
@@ -150,6 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             style: TextStyle(
                                               color: const Color(0xff1E2B46),
                                               fontWeight: FontWeight.w600,
+                                              fontSize: isCompact ? 12 : 14,
                                             ),
                                           ),
                                         ),
@@ -157,37 +159,38 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(height: 22),
+                                SizedBox(height: isCompact ? 16 : 22),
                                 Container(
-                                  height: 64,
-                                  width: 64,
+                                  height: isCompact ? 52 : 64,
+                                  width: isCompact ? 52 : 64,
                                   decoration: BoxDecoration(
                                     color: const Color(0xff37435D),
                                     borderRadius: BorderRadius.circular(32),
                                   ),
-                                  child: const Icon(
+                                  child: Icon(
                                     Icons.person_outline,
                                     color: Colors.white,
-                                    size: 32,
+                                    size: isCompact ? 26 : 32,
                                   ),
                                 ),
-                                const SizedBox(height: 16),
-                                const Text(
+                                SizedBox(height: isCompact ? 10 : 16),
+                                Text(
                                   "Driver Login",
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: isCompact ? 16 : 18,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xff1E2B46),
                                   ),
                                 ),
-                                const SizedBox(height: 8),
-                                const Text(
+                                SizedBox(height: isCompact ? 6 : 8),
+                                Text(
                                   "Enter your registered phone number",
                                   style: TextStyle(
                                     color: Color(0xff64748B),
+                                    fontSize: isCompact ? 12 : 14,
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: isCompact ? 14 : 20),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
@@ -195,10 +198,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       color: Color(0xff1E2B46),
+                                      fontSize: isCompact ? 12 : 14,
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 8),
+                                SizedBox(height: isCompact ? 6 : 8),
                                 TextField(
                                   controller: phoneController,
                                   keyboardType: TextInputType.phone,
@@ -216,10 +220,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 20),
+                                SizedBox(height: isCompact ? 14 : 20),
                                 SizedBox(
                                   width: double.infinity,
-                                  height: 50,
+                                  height: isCompact ? 46 : 50,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color(0xff2C3957),
@@ -235,7 +239,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       "Send OTP",
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 16,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -248,31 +252,34 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Column(
                         children: [
-                          const SizedBox(height: 24),
+                          SizedBox(height: isCompact ? 16 : 24),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: const [
+                            children: [
                               _FeatureItem(
                                 icon: Icons.verified_user_outlined,
                                 label: "Secure\nAuthentication",
+                                isCompact: isCompact,
                               ),
                               _FeatureItem(
                                 icon: Icons.star_outline,
                                 label: "Professional\nService",
+                                isCompact: isCompact,
                               ),
                               _FeatureItem(
                                 icon: Icons.verified_outlined,
                                 label: "Quick\nAccess",
+                                isCompact: isCompact,
                               ),
                             ],
                           ),
-                          const SizedBox(height: 18),
-                          const Text(
+                          SizedBox(height: isCompact ? 12 : 18),
+                          Text(
                             "By continuing, you agree to our Terms of Service & Privacy Policy",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color(0xffB2B9C9),
-                              fontSize: 12,
+                              fontSize: isCompact ? 10 : 12,
                             ),
                           ),
                         ],
@@ -290,35 +297,40 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class _FeatureItem extends StatelessWidget {
-  const _FeatureItem({required this.icon, required this.label});
+  const _FeatureItem({
+    required this.icon,
+    required this.label,
+    required this.isCompact,
+  });
 
   final IconData icon;
   final String label;
+  final bool isCompact;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          height: 48,
-          width: 48,
+          height: isCompact ? 40 : 48,
+          width: isCompact ? 40 : 48,
           decoration: BoxDecoration(
             color: const Color(0xff2B3859),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(isCompact ? 20 : 24),
           ),
           child: Icon(
             icon,
             color: const Color(0xffF4B740),
-            size: 22,
+            size: isCompact ? 18 : 22,
           ),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: isCompact ? 6 : 10),
         Text(
           label,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
-            fontSize: 12,
+            fontSize: isCompact ? 10 : 12,
             fontWeight: FontWeight.w600,
           ),
         ),
