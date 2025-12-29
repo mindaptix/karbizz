@@ -8,172 +8,56 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF3F5FA),
+      backgroundColor: Colors.transparent,
       drawer: const SideNavigationDrawer(currentRoute: Routes.home),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.fromLTRB(20, 28, 20, 24),
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xff3D4658),
-                      Color(0xff101826),
-                    ],
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Builder(
-                          builder: (context) => IconButton(
-                            icon: const Icon(Icons.menu, color: Colors.white),
-                            onPressed: () {
-                              Scaffold.of(context).openDrawer();
-                            },
-                          ),
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: Image.asset(
-                              'assets/logo.png',
-                              height: 36,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xff283454),
+              Color(0xff121B2B),
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Builder(
+                            builder: (context) => IconButton(
+                              icon: const Icon(Icons.menu, color: Colors.white),
+                              onPressed: () {
+                                Scaffold.of(context).openDrawer();
+                              },
                             ),
                           ),
-                        ),
-                        Stack(
-                          children: [
-                            IconButton(
-                              icon: const Icon(
-                                Icons.notifications_none,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {},
-                            ),
-                            Positioned(
-                              right: 8,
-                              top: 8,
-                              child: Container(
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xffFF3B30),
-                                  borderRadius: BorderRadius.circular(12),
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/logo.png',
+                                  height: 28,
                                 ),
-                                alignment: Alignment.center,
-                                child: const Text(
-                                  '1',
+                                const SizedBox(width: 8),
+                                const Text(
+                                  'Karbizz Pro',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 11,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const CircleAvatar(
-                          radius: 32,
-                          backgroundColor: Color(0xffF4A500),
-                          child: Text(
-                            'AS',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                'Good Afternoon',
-                                style: TextStyle(
-                                  color: Color(0xffD0D6E3),
-                                  fontSize: 14,
-                                ),
-                              ),
-                              SizedBox(height: 6),
-                              Text(
-                                'Arjun Singh',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(height: 4),
-                              Text(
-                                'ID: KRB-001',
-                                style: TextStyle(
-                                  color: Color(0xffD0D6E3),
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        _StatItem(
-                          icon: Icons.star,
-                          iconColor: Color(0xffFDB022),
-                          value: '4.8',
-                          label: 'Rating',
-                        ),
-                        _StatItem(
-                          icon: Icons.local_taxi,
-                          iconColor: Color(0xff7ACBFF),
-                          value: '1,247',
-                          label: 'Total Trips',
-                        ),
-                        _StatItem(
-                          icon: Icons.access_time,
-                          iconColor: Color(0xff8BD3A5),
-                          value: '16:51',
-                          label: 'Current Time',
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: const Color(0xff5A6274),
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.white30),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.directions_car, color: Colors.amber),
-                          const SizedBox(width: 12),
-                          const Expanded(
-                            child: Text(
-                              'Maruti Dzire - DL-01-AB-1234',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                              ),
+                              ],
                             ),
                           ),
                           Container(
@@ -182,202 +66,17 @@ class HomeScreen extends StatelessWidget {
                               vertical: 6,
                             ),
                             decoration: BoxDecoration(
-                              color: const Color(0xff6CC08B),
+                              color: const Color(0xff0FA958),
                               borderRadius: BorderRadius.circular(18),
-                            ),
-                            child: Row(
-                              children: const [
-                                Icon(
-                                  Icons.monitor_heart,
-                                  size: 16,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(width: 6),
-                                Text(
-                                  'Online',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xff0FA958).withOpacity(0.35),
+                                  blurRadius: 12,
                                 ),
                               ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: _MetricCard(
-                        icon: Icons.directions_car_filled,
-                        iconBackground: const Color(0xffE1EDFF),
-                        iconColor: const Color(0xff2F70FF),
-                        label: 'Trips Today',
-                        value: '5',
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: _MetricCard(
-                        icon: Icons.access_time,
-                        iconBackground: const Color(0xffDFF6E8),
-                        iconColor: const Color(0xff12B76A),
-                        label: 'Hours Online',
-                        value: '6.5h',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 18),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12.withOpacity(0.08),
-                        blurRadius: 12,
-                        offset: const Offset(0, 6),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.filter_alt_outlined, color: Color(0xff3C4B69)),
-                      const SizedBox(width: 12),
-                      const Expanded(
-                        child: Text(
-                          'In Progress',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: const Color(0xffE1EDFF),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Text(
-                          '4',
-                          style: TextStyle(
-                            color: Color(0xff2F70FF),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const Icon(Icons.keyboard_arrow_down, color: Color(0xff3C4B69)),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 18),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        'Current Booking',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: const Color(0xffEDF1F7),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: const Text(
-                        '1 Duty',
-                        style: TextStyle(
-                          color: Color(0xff3C4B69),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 12),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12.withOpacity(0.08),
-                        blurRadius: 16,
-                        offset: const Offset(0, 6),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const CircleAvatar(
-                            radius: 22,
-                            backgroundColor: Color(0xff3D4A5F),
-                            child: Text(
-                              'RK',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'Rajesh Kumar',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                SizedBox(height: 4),
-                                Text(
-                                  '#BKG-2025-002',
-                                  style: TextStyle(
-                                    color: Color(0xff6B7280),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: const Color(0xff2F70FF),
-                              borderRadius: BorderRadius.circular(16),
                             ),
                             child: const Text(
-                              'On the Way',
+                              'Online',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
@@ -385,65 +84,161 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 8),
-                          const Text(
-                            '12.5 km',
-                            style: TextStyle(
-                              color: Color(0xff6B7280),
-                            ),
+                          Stack(
+                            children: [
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.notifications_none,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {},
+                              ),
+                              Positioned(
+                                right: 8,
+                                top: 8,
+                                child: Container(
+                                  width: 10,
+                                  height: 10,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffFF4B4B),
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        children: const [
-                          Icon(Icons.access_time, size: 18, color: Color(0xff3C4B69)),
-                          SizedBox(width: 6),
-                          Text(
-                            '4:15 PM · 25 mins',
-                            style: TextStyle(
-                              color: Color(0xff3C4B69),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: const Color(0xffE1EDFF),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const Text(
-                          'HR_KM (Local)',
-                          style: TextStyle(
-                            color: Color(0xff2F70FF),
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
                       ),
                       const SizedBox(height: 16),
                       Container(
-                        padding: const EdgeInsets.all(14),
+                        padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: const Color(0xffF6F7FB),
-                          borderRadius: BorderRadius.circular(16),
+                          color: const Color(0xff3F4A5E),
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(color: Colors.white24),
                         ),
-                        child: Column(
-                          children: const [
-                            _LocationRow(
-                              label: 'Pickup',
-                              location: 'India Gate',
-                              icon: Icons.location_on,
-                              iconBackground: Color(0xffE3F8EC),
-                              iconColor: Color(0xff12B76A),
+                        child: Row(
+                          children: [
+                            Stack(
+                              children: [
+                                const CircleAvatar(
+                                  radius: 34,
+                                  backgroundColor: Color(0xffD2D9E6),
+                                  child: Text(
+                                    'AS',
+                                    style: TextStyle(
+                                      color: Color(0xff243248),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  right: 0,
+                                  bottom: 4,
+                                  child: Container(
+                                    width: 16,
+                                    height: 16,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xff21C55D),
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: const Color(0xff3F4A5E),
+                                        width: 2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 12),
-                            _LocationRow(
-                              label: 'Drop-off',
-                              location: 'Red Fort, Delhi',
-                              icon: Icons.location_on,
-                              iconBackground: Color(0xffFEECEC),
-                              iconColor: Color(0xffF04438),
+                            const SizedBox(width: 14),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Arjun Singh',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  const Text(
+                                    '+91 98765 43210',
+                                    style: TextStyle(
+                                      color: Color(0xffFFC107),
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.key,
+                                        color: Colors.white70,
+                                        size: 16,
+                                      ),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        'DL-01-AB-1234',
+                                        style: TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 13,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.star,
+                                        color: Color(0xffFDB022),
+                                        size: 16,
+                                      ),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        '4.8',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      SizedBox(width: 12),
+                                      Text(
+                                        '•',
+                                        style: TextStyle(color: Colors.white54),
+                                      ),
+                                      SizedBox(width: 12),
+                                      Text(
+                                        '156 trips',
+                                        style: TextStyle(
+                                          color: Colors.white70,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color: const Color(0xff16C264),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: const Text(
+                                'Available',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -451,170 +246,280 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-              const SizedBox(height: 24),
-          ],
+                const SizedBox(height: 6),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 22,
+                        height: 22,
+                        decoration: BoxDecoration(
+                          color: const Color(0xff3A0C12),
+                          borderRadius: BorderRadius.circular(11),
+                          border: Border.all(color: const Color(0xffFF5B5B)),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.priority_high,
+                          color: Color(0xffFF5B5B),
+                          size: 14,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      const Text(
+                        'Pending Assignments (1)',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffE2381C),
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.9),
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              child: const Text(
+                                'Action Required',
+                                style: TextStyle(
+                                  color: Color(0xffD62319),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              child: const Text(
+                                'Airport Transfer',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                        const Text(
+                          'Priya Sharma',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text(
+                          '3:00 PM',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          children: const [
+                            Icon(Icons.circle, color: Colors.white, size: 8),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                'Cyber City, Gurugram',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 18),
+                        const Divider(color: Colors.white30, height: 1),
+                        const SizedBox(height: 14),
+                        Row(
+                          children: const [
+                            Expanded(
+                              child: Text(
+                                'Tap to Accept/Reject',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            Icon(
+                              Icons.chevron_right,
+                              color: Colors.white,
+                              size: 24,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'Upcoming Duties',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Expanded(
+                              child: Text(
+                                'Amit Verma',
+                                style: TextStyle(
+                                  color: Color(0xff1F2A44),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color: const Color(0xff3B73FF),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: const Text(
+                                'Outstation',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: const [
+                            Icon(Icons.calendar_month,
+                                size: 18, color: Color(0xff5E6A7B)),
+                            SizedBox(width: 8),
+                            Text(
+                              'Tomorrow, Dec 18, 2025',
+                              style: TextStyle(
+                                color: Color(0xff5E6A7B),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 6),
+                        Row(
+                          children: const [
+                            Icon(Icons.access_time,
+                                size: 18, color: Color(0xff5E6A7B)),
+                            SizedBox(width: 8),
+                            Text(
+                              'Tomorrow, 9:00 AM',
+                              style: TextStyle(
+                                color: Color(0xff5E6A7B),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 14),
+                        Row(
+                          children: const [
+                            Icon(Icons.circle,
+                                color: Color(0xff16C264), size: 10),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                'Connaught Place, New Delhi',
+                                style: TextStyle(
+                                  color: Color(0xff1F2A44),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 18),
+                        const Divider(color: Color(0xffE3E7EF), height: 1),
+                        const SizedBox(height: 14),
+                        Row(
+                          children: const [
+                            Icon(Icons.directions_car,
+                                color: Color(0xff5E6A7B)),
+                            SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                'Premium Sedan',
+                                style: TextStyle(
+                                  color: Color(0xff5E6A7B),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            Icon(Icons.chevron_right,
+                                color: Color(0xff9AA4B2)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 32),
+              ],
+            ),
+          ),
         ),
       ),
-    );
-  }
-}
-
-class _StatItem extends StatelessWidget {
-  const _StatItem({
-    required this.icon,
-    required this.iconColor,
-    required this.value,
-    required this.label,
-  });
-
-  final IconData icon;
-  final Color iconColor;
-  final String value;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(icon, color: iconColor),
-        const SizedBox(height: 6),
-        Text(
-          value,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: const TextStyle(
-            color: Color(0xffD0D6E3),
-            fontSize: 12,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _MetricCard extends StatelessWidget {
-  const _MetricCard({
-    required this.icon,
-    required this.iconBackground,
-    required this.iconColor,
-    required this.label,
-    required this.value,
-  });
-
-  final IconData icon;
-  final Color iconBackground;
-  final Color iconColor;
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12.withOpacity(0.08),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: iconBackground,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(icon, color: iconColor),
-          ),
-          const SizedBox(height: 18),
-          Text(
-            label,
-            style: const TextStyle(
-              color: Color(0xff3C4B69),
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            value,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _LocationRow extends StatelessWidget {
-  const _LocationRow({
-    required this.label,
-    required this.location,
-    required this.icon,
-    required this.iconBackground,
-    required this.iconColor,
-  });
-
-  final String label;
-  final String location;
-  final IconData icon;
-  final Color iconBackground;
-  final Color iconColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 36,
-          height: 36,
-          decoration: BoxDecoration(
-            color: iconBackground,
-            shape: BoxShape.circle,
-          ),
-          child: Icon(icon, color: iconColor, size: 18),
-        ),
-        const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label.toUpperCase(),
-              style: const TextStyle(
-                color: Color(0xff6B7280),
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              location,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }
