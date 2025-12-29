@@ -147,10 +147,12 @@ class SideNavigationDrawer extends StatelessWidget {
                   isActive: currentRoute == Routes.allDuties,
                   onTap: () => _navigateTo(context, Routes.allDuties),
                 ),
-                const _DrawerTile(
+                _DrawerTile(
                   icon: Icons.receipt_long_outlined,
                   title: 'Expenses',
                   subtitle: 'Track and manage costs',
+                  isActive: currentRoute == Routes.expenses,
+                  onTap: () => _navigateTo(context, Routes.expenses),
                 ),
                 const _DrawerTile(
                   icon: Icons.credit_card_outlined,
