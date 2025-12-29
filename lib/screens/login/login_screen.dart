@@ -9,239 +9,297 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool obscure = true;
-
   final TextEditingController phoneController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF4F6FB),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-
-              const SizedBox(height: 40),
-
-              /// Logo
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(18),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12.withOpacity(0.05),
-                      blurRadius: 15,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xff1C2D5D),
+              Color(0xff1B2552),
+              Color(0xff2A355F),
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 18,
+                        offset: Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: Image.asset(
+                    "assets/logo.png",
+                    width: 64,
+                  ),
                 ),
-                child: Image.asset(
-                  "assets/logo.png",
-                  width: 70,
+                const SizedBox(height: 16),
+                const Text(
+                  "Karbizz Pro",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-
-              const SizedBox(height: 16),
-
-              /// Title
-              const Text(
-                "Karbizz Pro",
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff1A2D5C),
+                const SizedBox(height: 6),
+                const Text(
+                  "CORPORATE CAR RENTAL",
+                  style: TextStyle(
+                    fontSize: 12,
+                    letterSpacing: 2,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xffF4B740),
+                  ),
                 ),
-              ),
-
-              const SizedBox(height: 4),
-
-              /// Subtitle
-              const Text(
-                "Professional Driver Platform",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black54,
+                const SizedBox(height: 20),
+                const Text(
+                  "Welcome",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-
-              const SizedBox(height: 30),
-
-              /// White Card Section
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 28),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(22),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12.withOpacity(0.07),
-                      blurRadius: 20,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
+                const SizedBox(height: 6),
+                const Text(
+                  "Sign in to continue",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Color(0xffF4B740),
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-                    Center(
-                      child: Column(
-                        children: const [
-                          Text(
-                            "Welcome Back",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(height: 6),
-                          Text(
-                            "Sign in to your driver account",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black54,
-                            ),
-                          ),
-                        ],
+                const SizedBox(height: 24),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffF7F7FA),
+                    borderRadius: BorderRadius.circular(28),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 20,
+                        offset: Offset(0, 10),
                       ),
-                    ),
-
-                    const SizedBox(height: 30),
-
-                    const Text(
-                      "Mobile Number",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15,
-                      ),
-                    ),
-
-                    const SizedBox(height: 6),
-
-                    TextField(
-                      controller: phoneController,
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color(0xffF5F6FA),
-                        hintText: "98765 43210",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: const Color(0xffE6ECF8),
+                          borderRadius: BorderRadius.circular(40),
                         ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    const Text(
-                      "Password",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15,
-                      ),
-                    ),
-
-                    const SizedBox(height: 6),
-
-                    TextField(
-                      controller: passwordController,
-                      obscureText: obscure,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color(0xffF5F6FA),
-                        hintText: "Enter your password",
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            obscure ? Icons.visibility_off : Icons.visibility,
-                            color: Colors.black45,
-                          ),
-                          onPressed: () {
-                            setState(() => obscure = !obscure);
-                          },
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 28),
-
-                    /// Sign In Button
-                    SizedBox(
-                      width: double.infinity,
-                      height: 52,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xff1A3FA6),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                        ),
-                        onPressed: () {
-                          debugPrint("LOGIN -> OTP");
-                          Navigator.of(context).pushNamed(Routes.otp);
-                        },
-                        child: const Text(
-                          "Sign In",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 22),
-
-                    /// Signup
-                    Center(
-                      child: RichText(
-                        text: const TextSpan(
-                          text: "Don't have an account? ",
-                          style: TextStyle(color: Colors.black87),
+                        child: Row(
                           children: [
-                            TextSpan(
-                              text: "Sign up here",
-                              style: TextStyle(
-                                color: Color(0xff1A3FA6),
-                                fontWeight: FontWeight.w600,
+                            Expanded(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xff1E2B46),
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    "Driver Login",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                  "Passenger Login",
+                                  style: TextStyle(
+                                    color: const Color(0xff1E2B46),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                    )
+                      const SizedBox(height: 22),
+                      Container(
+                        height: 64,
+                        width: 64,
+                        decoration: BoxDecoration(
+                          color: const Color(0xff37435D),
+                          borderRadius: BorderRadius.circular(32),
+                        ),
+                        child: const Icon(
+                          Icons.person_outline,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      const Text(
+                        "Driver Login",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff1E2B46),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        "Enter your registered phone number",
+                        style: TextStyle(
+                          color: Color(0xff64748B),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Phone Number",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff1E2B46),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: phoneController,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: "+91 98765 43210",
+                          prefixIcon: const Icon(
+                            Icons.phone_in_talk_outlined,
+                            color: Color(0xff64748B),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(14),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xff2C3957),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                          ),
+                          onPressed: () {
+                            debugPrint("LOGIN -> OTP");
+                            Navigator.of(context).pushNamed(Routes.otp);
+                          },
+                          child: const Text(
+                            "Send OTP",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: const [
+                    _FeatureItem(
+                      icon: Icons.verified_user_outlined,
+                      label: "Secure\nAuthentication",
+                    ),
+                    _FeatureItem(
+                      icon: Icons.star_outline,
+                      label: "Professional\nService",
+                    ),
+                    _FeatureItem(
+                      icon: Icons.verified_outlined,
+                      label: "Quick\nAccess",
+                    ),
                   ],
                 ),
-              ),
-
-              const SizedBox(height: 20),
-
-              /// Footer
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  "By continuing, you agree to our Terms of Service and Privacy Policy",
+                const SizedBox(height: 18),
+                const Text(
+                  "By continuing, you agree to our Terms of Service & Privacy Policy",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black54,
+                    color: Color(0xffB2B9C9),
                     fontSize: 12,
                   ),
                 ),
-              ),
-
-              const SizedBox(height: 20),
-          ],
+              ],
+            ),
+          ),
         ),
       ),
+    );
+  }
+}
+
+class _FeatureItem extends StatelessWidget {
+  const _FeatureItem({required this.icon, required this.label});
+
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 48,
+          width: 48,
+          decoration: BoxDecoration(
+            color: const Color(0xff2B3859),
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Icon(
+            icon,
+            color: const Color(0xffF4B740),
+            size: 22,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
     );
   }
 }
