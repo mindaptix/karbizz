@@ -91,7 +91,11 @@ class HomeScreen extends StatelessWidget {
                                   Icons.notifications_none,
                                   color: Colors.white,
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).pushNamed(
+                                    Routes.notifications,
+                                  );
+                                },
                               ),
                               Positioned(
                                 right: 8,
