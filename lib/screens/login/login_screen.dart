@@ -10,6 +10,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool obscure = true;
+  bool _isNavigating = false;
 
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -185,8 +186,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         onPressed: () {
+                          if (_isNavigating) {
+                            return;
+                          }
+                          setState(() => _isNavigating = true);
                           FocusScope.of(context).unfocus();
-                          Navigator.of(context).pushNamed(Routes.otp);
+                          Navigator.of(context).pushNamed(Routes.otp).then((_) {
+                            if (!mounted) {
+                              return;
+                            }
+                            setState(() => _isNavigating = false);
+                          });
                         },
                         child: const Text(
                           "Sign In",
