@@ -6,7 +6,6 @@ import 'screens/home/expenses_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/notifications/notification_screen.dart';
 import 'screens/otp/otp_screen.dart';
-import 'screens/splash/splash_screen.dart';
 import 'screens/welcome/welcome_screen.dart';
 import 'routes/routes.dart';
 
@@ -31,11 +30,10 @@ class KarbizzApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // Initial screen
-      initialRoute: Routes.splash,
+      initialRoute: Routes.welcome,
 
       // App routes
       routes: {
-        Routes.splash: (context) => const SplashScreen(),
         Routes.welcome: (context) => const WelcomeScreen(),
         Routes.login: (context) => const LoginScreen(),
         Routes.otp: (context) => const OtpScreen(),
