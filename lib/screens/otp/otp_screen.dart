@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../routes/routes.dart';
+import '../../services/auth0_service.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key});
@@ -10,6 +12,8 @@ class OtpScreen extends StatefulWidget {
 
 class _OtpScreenState extends State<OtpScreen> {
   final TextEditingController otpController = TextEditingController();
+  final Auth0Service _auth0Service = Auth0Service();
+  bool _isVerifying = false;
 
   @override
   void dispose() {
@@ -35,6 +39,8 @@ class _OtpScreenState extends State<OtpScreen> {
           child: LayoutBuilder(
             builder: (context, constraints) {
               final bool isCompact = constraints.maxHeight < 720;
+              final String? phoneNumber =
+                  ModalRoute.of(context)?.settings.arguments as String?;
               return SingleChildScrollView(
                 padding:
                     EdgeInsets.symmetric(horizontal: 20, vertical: isCompact ? 8 : 20),
@@ -123,50 +129,6 @@ class _OtpScreenState extends State<OtpScreen> {
                             child: Column(
                               children: [
                                 Container(
-                                  padding: EdgeInsets.all(isCompact ? 4 : 6),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          padding:
-                                              EdgeInsets.symmetric(vertical: isCompact ? 8 : 10),
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xff1A2D5C),
-                                            borderRadius:
-                                                BorderRadius.circular(16),
-                                          ),
-                                          child: Text(
-                                            "Driver Login",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: isCompact ? 11 : 14,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: isCompact ? 8 : 12),
-                                      Expanded(
-                                        child: Text(
-                                          "Passenger Login",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Color(0xff1A2D5C),
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: isCompact ? 11 : 14,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(height: isCompact ? 12 : 24),
-                                Container(
                                   width: isCompact ? 50 : 70,
                                   height: isCompact ? 50 : 70,
                                   decoration: BoxDecoration(
@@ -190,7 +152,9 @@ class _OtpScreenState extends State<OtpScreen> {
                                 ),
                                 SizedBox(height: isCompact ? 4 : 8),
                                 Text(
-                                  "We've sent a 6-digit OTP to\n9464506199",
+                                  phoneNumber == null || phoneNumber.isEmpty
+                                      ? "We've sent a 6-digit OTP to your phone number"
+                                      : "We've sent a 6-digit OTP to\n$phoneNumber",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: isCompact ? 11 : 14,
@@ -247,13 +211,73 @@ class _OtpScreenState extends State<OtpScreen> {
                                             BorderRadius.circular(14),
                                       ),
                                     ),
-                                    onPressed: () {
-                                      FocusScope.of(context).unfocus();
-                                      Navigator.of(context)
-                                          .pushReplacementNamed(Routes.home);
-                                    },
+                                    onPressed: _isVerifying
+                                        ? null
+                                        : () async {
+                                            FocusScope.of(context).unfocus();
+                                            final otp = otpController.text.trim();
+                                            if (otp.length != 6) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                    "Please enter the 6-digit OTP.",
+                                                  ),
+                                                ),
+                                              );
+                                              return;
+                                            }
+                                            if (phoneNumber == null ||
+                                                phoneNumber.isEmpty) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                    "Missing phone number. Please restart login.",
+                                                  ),
+                                                ),
+                                              );
+                                              return;
+                                            }
+                                            setState(() {
+                                              _isVerifying = true;
+                                            });
+                                            try {
+                                              await _auth0Service.verifyOtp(
+                                                phoneNumber: phoneNumber,
+                                                otp: otp,
+                                              );
+                                              if (!context.mounted) {
+                                                return;
+                                              }
+                                              Navigator.of(context)
+                                                  .pushReplacementNamed(
+                                                Routes.home,
+                                              );
+                                            } catch (error) {
+                                              if (!context.mounted) {
+                                                return;
+                                              }
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    "OTP verification failed: $error",
+                                                  ),
+                                                ),
+                                              );
+                                            } finally {
+                                              if (context.mounted) {
+                                                setState(() {
+                                                  _isVerifying = false;
+                                                });
+                                              }
+                                            }
+                                          },
                                     child: Text(
-                                      "Verify & Login",
+                                      _isVerifying
+                                          ? "Verifying..."
+                                          : "Verify & Login",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: isCompact ? 13 : 16,
