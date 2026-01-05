@@ -35,7 +35,7 @@ class _OtpScreenState extends State<OtpScreen> {
           child: LayoutBuilder(
             builder: (context, constraints) {
               final bool isCompact = constraints.maxHeight < 720;
-              return Padding(
+              return SingleChildScrollView(
                 padding:
                     EdgeInsets.symmetric(horizontal: 20, vertical: isCompact ? 8 : 20),
                 child: ConstrainedBox(
