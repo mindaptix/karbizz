@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../routes/routes.dart';
+import '../../services/auth0_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,6 +12,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController phoneController = TextEditingController();
+  final Auth0Service _auth0Service = Auth0Service();
+  bool _isSendingOtp = false;
 
   @override
   Widget build(BuildContext context) {
@@ -120,52 +124,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Column(
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.all(scaled(4)),
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xffE6ECF8),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                              vertical: scaled(8),
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xff1E2B46),
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                "Driver Login",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: scaled(13),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Center(
-                                            child: Text(
-                                              "Passenger Login",
-                                              style: TextStyle(
-                                                color: const Color(0xff1E2B46),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: scaled(13),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(height: scaled(16)),
-                                  Container(
                                     height: scaled(56),
                                     width: scaled(56),
                                     decoration: BoxDecoration(
@@ -180,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   SizedBox(height: scaled(12)),
                                   Text(
-                                    "Driver Login",
+                                    "Login",
                                     style: TextStyle(
                                       fontSize: scaled(16),
                                       fontWeight: FontWeight.w700,
@@ -237,13 +195,61 @@ class _LoginScreenState extends State<LoginScreen> {
                                           borderRadius: BorderRadius.circular(14),
                                         ),
                                       ),
-                                      onPressed: () {
-                                        debugPrint("LOGIN -> OTP");
-                                        Navigator.of(context)
-                                            .pushNamed(Routes.otp);
-                                      },
+                                      onPressed: _isSendingOtp
+                                          ? null
+                                          : () async {
+                                              final phoneNumber =
+                                                  phoneController.text.trim();
+                                              if (phoneNumber.isEmpty) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  const SnackBar(
+                                                    content: Text(
+                                                      "Please enter your phone number.",
+                                                    ),
+                                                  ),
+                                                );
+                                                return;
+                                              }
+                                              setState(() {
+                                                _isSendingOtp = true;
+                                              });
+                                              try {
+                                                await _auth0Service.sendOtp(
+                                                  phoneNumber: phoneNumber,
+                                                );
+                                                if (!context.mounted) {
+                                                  return;
+                                                }
+                                                debugPrint("LOGIN -> OTP");
+                                                Navigator.of(context).pushNamed(
+                                                  Routes.otp,
+                                                  arguments: phoneNumber,
+                                                );
+                                              } catch (error) {
+                                                if (!context.mounted) {
+                                                  return;
+                                                }
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      "Failed to send OTP: $error",
+                                                    ),
+                                                  ),
+                                                );
+                                              } finally {
+                                                if (context.mounted) {
+                                                  setState(() {
+                                                    _isSendingOtp = false;
+                                                  });
+                                                }
+                                              }
+                                            },
                                       child: Text(
-                                        "Send OTP",
+                                        _isSendingOtp
+                                            ? "Sending..."
+                                            : "Send OTP",
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: scaled(14),
